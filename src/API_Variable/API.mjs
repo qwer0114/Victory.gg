@@ -1,4 +1,4 @@
-const API_KEY = "api_key=RGAPI-1cad4f35-46b7-40c4-9fbd-12d3ff70dc9c";
+const API_KEY = "api_key=RGAPI-3c68bacc-9353-498c-8585-d1e3f703c03c";
 const API_NAME =
   "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 const API_PROFILE =

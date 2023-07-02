@@ -7,11 +7,11 @@ import {
   API_TIER,
   API_MATCHID,
   API_MATCH,
-} from "./API_Variable/API.mjs";
+} from "../../API_Variable/API.mjs";
 import Match from "./Match";
 
 // 매치에서 필요한 정보 킬 데스 어시 cs 챔피언
-function MatchID({ puuID }) {
+function MatchID({ puuID, setSummonerName }) {
   let [matchID, setMatchID] = useState([]);
 
   const getMatchID = async () => {
@@ -24,11 +24,16 @@ function MatchID({ puuID }) {
 
   useEffect(() => {
     getMatchID();
-  }, []);
+  }, [puuID]);
 
   return matchID.length !== 0
     ? matchID.map((matchID, i) => (
-        <Match matchID={matchID} puuID={puuID} key={i}></Match>
+        <Match
+          matchID={matchID}
+          puuID={puuID}
+          setSummonerName={setSummonerName}
+          key={i}
+        ></Match>
       ))
     : null;
 }

@@ -1,18 +1,9 @@
-import {
-  API_KEY,
-  API_NAME,
-  API_PROFILE,
-  API_TIER,
-  API_MATCHID,
-  API_MATCH,
-  API_CHAMPION,
-  API_ITEM,
-} from "./API_Variable/API.mjs";
+import { API_KEY, API_MATCH } from "../../API_Variable/API.mjs";
 import { async } from "q";
 import { useEffect, useState } from "react";
 import MatchList from "./MatchList";
 
-function Match({ matchID, puuID }) {
+function Match({ matchID, puuID, setSummonerName }) {
   let [matchInfo, setMatchInfo] = useState([]);
   let [participants, setParticipants] = useState([]);
   let [team1, setTeam1] = useState([]);
@@ -32,7 +23,7 @@ function Match({ matchID, puuID }) {
 
   useEffect(() => {
     getMatch();
-  }, []);
+  }, [matchID]);
 
   return (
     <div>
@@ -42,6 +33,7 @@ function Match({ matchID, puuID }) {
           matchInfo={matchInfo}
           team1={team1}
           team2={team2}
+          setSummonerName={setSummonerName}
         ></MatchList>
       ) : null}
     </div>

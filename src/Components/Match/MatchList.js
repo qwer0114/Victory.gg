@@ -7,12 +7,12 @@ import {
   API_MATCH,
   API_CHAMPION,
   API_ITEM,
-} from "./API_Variable/API.mjs";
-import Item from "./Item";
-import Champion from "./Champion";
-import Spell from "./Spell";
+} from "../../API_Variable/API.mjs";
+import Item from "../Image/Item";
+import Champion from "../Image/Champion";
+import Spell from "../Image/Spell";
 import MatchModal from "./MatchModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,7 +21,7 @@ const gameMode = {
   ARAM: "무작위 총력전",
 };
 
-function MatchList({ myInfo, matchInfo, team1, team2 }) {
+function MatchList({ myInfo, matchInfo, team1, team2, setSummonerName }) {
   let [modal, setModal] = useState(false);
   const timeChange = (time) => {
     if (time > 10000) {
@@ -36,6 +36,7 @@ function MatchList({ myInfo, matchInfo, team1, team2 }) {
       return `${minute}분${second}초`;
     }
   };
+
   return (
     <>
       <div
@@ -129,7 +130,11 @@ function MatchList({ myInfo, matchInfo, team1, team2 }) {
         </div>
       </div>
       {modal === true ? (
-        <MatchModal team1={team1} team2={team2}></MatchModal>
+        <MatchModal
+          team1={team1}
+          team2={team2}
+          setSummonerName={setSummonerName}
+        ></MatchModal>
       ) : null}
     </>
   );

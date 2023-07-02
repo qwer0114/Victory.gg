@@ -1,8 +1,13 @@
-import Champion from "./Champion";
-import Spell from "./Spell";
-import Item from "./Item";
-function MatchModal({ team1, team2 }) {
-  console.log(team1);
+import Champion from "../Image/Champion";
+import { redirect, useParams } from "react-router";
+import Spell from "../Image/Spell";
+import Item from "../Image/Item";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+function MatchModal({ team1, team2, setSummonerName }) {
+  let { name } = useParams();
+  let navigate = useNavigate();
+  useEffect(() => {}, [name]);
   return (
     <div>
       <div className="bg-slate-200 h-8">
@@ -35,7 +40,14 @@ function MatchModal({ team1, team2 }) {
                 spell2={team.summoner2Id}
               ></Spell>
               <span className="summonerName text-xs">
-                <div>{team.summonerName}</div>
+                <div
+                  onClick={() => {
+                    setSummonerName(team.summonerName);
+                    navigate(`/summoner/${team.summonerName}`);
+                  }}
+                >
+                  {team.summonerName}
+                </div>
                 <div className="text-slate-500">{team.individualPosition}</div>
               </span>
             </div>
@@ -89,7 +101,14 @@ function MatchModal({ team1, team2 }) {
                 spell2={team.summoner2Id}
               ></Spell>
               <span className="summonerName w-30 text-xs">
-                <div>{team.summonerName}</div>
+                <div
+                  onClick={() => {
+                    setSummonerName(team.summonerName);
+                    navigate(`/summoner/${team.summonerName}`);
+                  }}
+                >
+                  {team.summonerName}
+                </div>
                 <div className="text-slate-500">{team.individualPosition}</div>
               </span>
             </div>

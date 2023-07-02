@@ -7,7 +7,7 @@ import {
   API_MATCH,
   API_CHAMPION,
   API_ITEM,
-} from "./API_Variable/API.mjs";
+} from "../../API_Variable/API.mjs";
 function Champion({ championName, width, height }) {
   return (
     <img

@@ -1,4 +1,4 @@
-import { API_SPELL } from "./API_Variable/API.mjs";
+import { API_SPELL } from "../../API_Variable/API.mjs";
 function Spell({ spell1, spell2 }) {
   const spell = {
     1: "SummonerBoost",
